@@ -61,39 +61,80 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-12 max-w-4xl mx-auto"
+          className="mt-12"
         >
-          <Card className="p-8 bg-card">
-            <h3 className="text-2xl font-semibold mb-6 text-center text-foreground">Quick Start</h3>
-            <p className="text-center text-muted-foreground mb-6">
-              Choose your AI difficulty and jump right into a game
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Button
-                onClick={() => handleQuickStart(2)}
-                variant="secondary"
-                className="btn-animate"
-                size="lg"
-              >
-                Easy (~1000 Elo)
-              </Button>
-              <Button
-                onClick={() => handleQuickStart(5)}
-                className="btn-animate bg-primary hover:bg-primary/90"
-                size="lg"
-              >
-                Medium (~1600 Elo)
-              </Button>
-              <Button
-                onClick={() => handleQuickStart(8)}
-                variant="secondary"
-                className="btn-animate"
-                size="lg"
-              >
-                Hard (~2200 Elo)
-              </Button>
-            </div>
-          </Card>
+          <h3 className="text-2xl font-semibold mb-6 text-center text-foreground">Quick Start - Play Against AI</h3>
+          <p className="text-center text-muted-foreground mb-8">
+            Choose your opponent
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Easy Bot */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="p-6 bg-card hover:bg-card/80 transition-colors cursor-pointer" onClick={() => handleQuickStart(2)}>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-4xl">
+                    🌱
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xl font-bold text-foreground mb-1">Rookie Bot</h4>
+                    <p className="text-sm text-primary font-semibold mb-2">1000 Elo</p>
+                    <p className="text-xs text-muted-foreground">Perfect for beginners learning the basics</p>
+                  </div>
+                  <Button className="w-full btn-animate" size="lg">
+                    Play Easy
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Medium Bot */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="p-6 bg-card hover:bg-card/80 transition-colors cursor-pointer border-2 border-primary" onClick={() => handleQuickStart(5)}>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-4xl">
+                    ⚔️
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xl font-bold text-foreground mb-1">Tactical Bot</h4>
+                    <p className="text-sm text-primary font-semibold mb-2">1600 Elo</p>
+                    <p className="text-xs text-muted-foreground">Balanced play with tactical awareness</p>
+                  </div>
+                  <Button className="w-full btn-animate bg-primary hover:bg-primary/90" size="lg">
+                    Play Medium
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Hard Bot */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="p-6 bg-card hover:bg-card/80 transition-colors cursor-pointer" onClick={() => handleQuickStart(8)}>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center text-4xl">
+                    👑
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xl font-bold text-foreground mb-1">Master Bot</h4>
+                    <p className="text-sm text-primary font-semibold mb-2">2200 Elo</p>
+                    <p className="text-xs text-muted-foreground">Advanced play for experienced players</p>
+                  </div>
+                  <Button className="w-full btn-animate" size="lg">
+                    Play Hard
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
+          </div>
         </motion.div>
         
         <motion.footer
