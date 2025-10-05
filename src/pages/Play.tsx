@@ -11,6 +11,8 @@ const Play = () => {
   const [game, setGame] = useState(new Chess());
   const [moveHistory, setMoveHistory] = useState<string[]>([]);
   const [selectedSquare, setSelectedSquare] = useState<Square | null>(null);
+  const [gameMode, setGameMode] = useState<"ai" | "human">("ai");
+  const [aiDifficulty, setAiDifficulty] = useState(5);
   
   const handleSquareClick = useCallback((square: Square) => {
     if (!selectedSquare) {
@@ -80,6 +82,28 @@ const Play = () => {
       duration: 2000,
     });
   };
+
+  const handleDifficultyChange = (level: number) => {
+    if (moveHistory.length > 0) {
+      if (window.confirm("Change AI Difficulty? This will reset the current game.")) {
+        setAiDifficulty(level);
+        resetGame();
+      }
+    } else {
+      setAiDifficulty(level);
+    }
+  };
+
+  const handleModeChange = (mode: "ai" | "human") => {
+    if (moveHistory.length > 0) {
+      if (window.confirm("Change game mode? This will reset the current game.")) {
+        setGameMode(mode);
+        resetGame();
+      }
+    } else {
+      setGameMode(mode);
+    }
+  };
   
   const undoMove = () => {
     const gameCopy = new Chess(game.fen());
@@ -124,6 +148,10 @@ const Play = () => {
               onReset={resetGame}
               onUndo={undoMove}
               canUndo={moveHistory.length > 0}
+              gameMode={gameMode}
+              onModeChange={handleModeChange}
+              aiDifficulty={aiDifficulty}
+              onDifficultyChange={handleDifficultyChange}
             />
             
             <MoveHistory moves={moveHistory} />

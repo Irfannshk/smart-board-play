@@ -1,9 +1,21 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DashboardCard from "@/components/DashboardCard";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { FaChessKing, FaBrain, FaUsb } from "react-icons/fa";
 import Header from "@/components/Header";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const [quickDifficulty, setQuickDifficulty] = useState(5);
+
+  const handleQuickStart = (difficulty: number) => {
+    setQuickDifficulty(difficulty);
+    navigate("/play");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -44,6 +56,45 @@ const Dashboard = () => {
             delay={0.3}
           />
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-12 max-w-4xl mx-auto"
+        >
+          <Card className="p-8 bg-card">
+            <h3 className="text-2xl font-semibold mb-6 text-center text-foreground">Quick Start</h3>
+            <p className="text-center text-muted-foreground mb-6">
+              Choose your AI difficulty and jump right into a game
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Button
+                onClick={() => handleQuickStart(2)}
+                variant="secondary"
+                className="btn-animate"
+                size="lg"
+              >
+                Easy (~1000 Elo)
+              </Button>
+              <Button
+                onClick={() => handleQuickStart(5)}
+                className="btn-animate bg-primary hover:bg-primary/90"
+                size="lg"
+              >
+                Medium (~1600 Elo)
+              </Button>
+              <Button
+                onClick={() => handleQuickStart(8)}
+                variant="secondary"
+                className="btn-animate"
+                size="lg"
+              >
+                Hard (~2200 Elo)
+              </Button>
+            </div>
+          </Card>
+        </motion.div>
         
         <motion.footer
           initial={{ opacity: 0 }}
