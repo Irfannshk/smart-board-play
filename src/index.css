@@ -63,6 +63,61 @@ All colors MUST be HSL.
     
     --radius: 0.5rem;
   }
+  
+  .light {
+    /* Light theme - inverted for brightness */
+    --background: 0 0% 98%;  /* Off-white */
+    --foreground: 0 0% 10%; /* Near-black */
+    
+    /* Card and elevated surfaces */
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 0 0% 10%;
+    
+    /* Popovers */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    
+    /* Primary accent - Keep sage green but adjust */
+    --primary: 88 42% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 88 42% 45%;
+    
+    /* Secondary */
+    --secondary: 30 34% 50%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Muted */
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+    
+    /* Accent */
+    --accent: 88 42% 35%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Success */
+    --success: 122 39% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders */
+    --border: 0 0% 85%;
+    --input: 0 0% 92%;
+    --ring: 88 42% 35%;
+    
+    /* Chess board stays same for familiarity */
+    --board-light: 60 47% 88%;
+    --board-dark: 92 27% 46%;
+    --board-highlight: 88 42% 35%;
+    --board-highlight-ai: 122 39% 45%;
+    
+    /* Shadows lighter */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
 }
 
 @layer base {

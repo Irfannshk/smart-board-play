@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaChessBoard } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
   const location = useLocation();
@@ -45,6 +46,7 @@ const Header = () => {
               Connect Device
             </Button>
           </Link>
+          <ThemeToggle />
         </nav>
       </div>
     </motion.header>
